@@ -233,8 +233,8 @@ IP_HEADER fill_ip_header(struct sockaddr_in src,struct sockaddr_in dest)
 /*填充TCP报头函数*/
 TCP_HEADER fill_tcp_header(unsigned int i,unsigned short port,char flag)
 {
-	TCP_HEADER head;
-	head.tcp_sport = htons(8888);
+    TCP_HEADER head;
+    head.tcp_sport = htons(8888);
     head.tcp_dport = htons(port);
     head.tcp_seq = htonl(i);
     head.tcp_ack = 0;
@@ -243,7 +243,7 @@ TCP_HEADER fill_tcp_header(unsigned int i,unsigned short port,char flag)
     head.tcp_win = htons(512);
     head.tcp_sum = 0;
     head.tcp_urp = 0;
-	return head;
+    return head;
 }
 
 /*填充伪TCP报头函数*/
@@ -252,9 +252,9 @@ PSD_HEADER fill_psd_header(IP_HEADER iph,TCP_HEADER tcph)
 	PSD_HEADER psd;
 	psd.saddr = iph.ip_src;
 	psd.daddr = iph.ip_dst;
-    psd.mbz = 0;
+	psd.mbz = 0;
 	psd.ptcl = IPPROTO_TCP;
-    psd.tcpl = htons(sizeof(tcph));
+    	psd.tcpl = htons(sizeof(tcph));
 	return psd;
 }
 
